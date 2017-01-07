@@ -113,7 +113,14 @@ def every_other_item(items):
        ['you', 'are', 'good', 'at', 'code']
     """
 
-    return ['the wrong thing']
+    every_other_item = []
+
+    for item in items:
+        index = items.index(item)
+        if index % 2 == 0:
+            every_other_item.append(item)
+
+    return every_other_item
 
 
 def largest_n_items(items, n):
