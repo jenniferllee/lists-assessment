@@ -17,17 +17,17 @@ def all_odd(numbers):
         []
     """
 
-    # odd_numbers = []
+    # List comprehension
+    odd_numbers = [number for number in numbers if number % 2 != 0]
+    return odd_numbers
 
+    # THIS ALSO WORKS:
+    # odd_numbers = []
     # for number in numbers:
     #     if number % 2 != 0:
     #         print number
     #         odd_numbers.append(number)
-
     # return odd_numbers
-
-    odd_numbers = [number for number in numbers if number % 2 != 0]
-    return odd_numbers
 
 
 def print_indices(items):
@@ -72,14 +72,15 @@ def print_indices(items):
     #     0 Toyota
     #     3 Volvo
 
-    # THIS WORKS:
-    # for count, item in enumerate(items):
-    #     print count, item
+    # THIS WORKS (but uses a built-in function):
+    for count, item in enumerate(items):
+        print count, item
 
-    item_in_tuple = []
-    for item in items:
-        item_in_tuple.append()
-        tuple(item)
+    # THIS ALSO WORKS (but uses a counter):
+    # count = 0
+    # for item in items:
+    #     print count, item
+    #     count += 1
 
 
 def foods_in_common(foods1, foods2):
@@ -110,10 +111,16 @@ def foods_in_common(foods1, foods2):
 
     """
 
+    # Convert lists to sets to do set math.
     foods1_set = set(foods1)
     foods2_set = set(foods2)
+
+    # Return an empty list if there are no items in common.
     if foods1_set & foods2_set == ([]):
         return []
+
+    # Otherwise, return list with common items sorted alphabetically.
+    # (Need to convert back to list to sort)
     else:
         common_foods = list(foods1_set & foods2_set)
         common_foods.sort()
@@ -166,14 +173,17 @@ def largest_n_items(items, n):
         [3, 3]
     """
 
+    # Sort numbers in increasing order.
     items.sort()
 
+    # Return empty list if n is 0.
     if n == 0:
         return []
+
+    # Otherwise, return last three numbers in list
     else:
         largest_items = items[(n*(-1)):]
-
-    return largest_items
+        return largest_items
 
 
 #####################################################################
