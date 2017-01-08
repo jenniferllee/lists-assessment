@@ -38,8 +38,11 @@ def long_words(words):
         >>> long_words(["all", "are", "tiny"])
         []
     """
-
-    return ['the wrong thing']
+    long_words = []
+    for word in words:
+        if len(word) > 4:
+            long_words.append(word)
+    return long_words
 
 
 def n_long_words(words, n):
@@ -56,8 +59,11 @@ def n_long_words(words, n):
         >>> n_long_words(["I", "like", "apples", "bananas", "you"], 5)
         ['apples', 'bananas']
     """
-
-    return ['the wrong thing']
+    long_words = []
+    for word in words:
+        if len(word) > n:
+            long_words.append(word)
+    return long_words
 
 
 def smallest_int(numbers):
@@ -79,7 +85,11 @@ def smallest_int(numbers):
         True
     """
 
-    return 100
+    numbers.sort()
+    if len(numbers) > 0:
+        return numbers[0]
+    else:
+        return
 
 
 def largest_int(numbers):
@@ -101,7 +111,11 @@ def largest_int(numbers):
         True
     """
 
-    return 0
+    numbers.sort()
+    if len(numbers) > 0:
+        return numbers[-1]
+    else:
+        return
 
 
 def halvesies(numbers):
@@ -119,7 +133,11 @@ def halvesies(numbers):
         [0.5, 2.5]
     """
 
-    return []
+    halvesies = []
+    for num in numbers:
+        num = num / 2.0
+        halvesies.append(num)
+    return halvesies
 
 
 def word_lengths(words):
@@ -131,7 +149,11 @@ def word_lengths(words):
         [5, 3, 5, 4]
     """
 
-    return []
+    word_lengths = []
+    for word in words:
+        length = len(word)
+        word_lengths.append(length)
+    return word_lengths
 
 
 def sum_numbers(numbers):
@@ -151,7 +173,10 @@ def sum_numbers(numbers):
         0
     """
 
-    return None
+    sum = 0
+    for num in numbers:
+        sum = sum + num
+    return sum
 
 
 def mult_numbers(numbers):
@@ -174,7 +199,10 @@ def mult_numbers(numbers):
         1
     """
 
-    return None
+    product = 1
+    for num in numbers:
+        product = product * num
+    return product
 
 
 def join_strings(words):
@@ -194,7 +222,10 @@ def join_strings(words):
         ''
     """
 
-    return "Not the right thing"
+    joined_string = ''
+    for word in words:
+        joined_string = joined_string + word
+    return joined_string
 
 
 def average(numbers):
@@ -217,7 +248,14 @@ def average(numbers):
     a feel free to provide a good solution here.)
     """
 
-    return 0
+    sum = 0
+
+    if len(numbers) > 0:
+        for num in numbers:
+            sum = sum + num
+        return float(sum) / float(len(numbers))
+    else:
+        return
 
 
 def join_strings_with_comma(words):
@@ -237,7 +275,14 @@ def join_strings_with_comma(words):
         'Pretzel'
     """
 
-    return ""
+    joined_string = ''
+    for word in words:
+        if len(words) > 1:
+            word = word + ", "
+            joined_string = joined_string + word
+        else:
+            joined_string = word
+    return joined_string
 
 
 def reverse_list(items):
@@ -263,7 +308,16 @@ def reverse_list(items):
         ['apple', 'berry', 'cherry']
     """
 
-    return []
+    reversed_list = items[::-1]
+    return reversed_list
+
+    # THIS ALSO WORKS:
+    # reversed_list = []
+    # i = -1
+    # for item in items:
+    #     reversed_list.append(items[i])
+    #     i -= 1
+    # return reversed_list
 
 
 def reverse_list_in_place(items):
@@ -289,7 +343,8 @@ def reverse_list_in_place(items):
         ['I', 'love', 'cookies']
     """
 
-    return []
+    # DOES NOT WORK: creates new list
+    # return items[::-1]
 
 
 def duplicates(items):
@@ -318,7 +373,24 @@ def duplicates(items):
         ['apple', 'apple', 'berry']
     """
 
-    return []
+    # THIS WORKS:
+    seen = set()
+    seen_add = seen.add
+    seen_twice = set(item for item in items if item in seen or seen_add(item))
+    duplicates = list(seen_twice)
+    duplicates.sort()
+    return duplicates
+
+# def list_duplicates(seq):
+#   seen = set()
+#   seen_add = seen.add
+#   # adds all elements it doesn't know yet to seen and all other to seen_twice
+#   seen_twice = set( x for x in seq if x in seen or seen_add(x) )
+#   # turn the set into a list (as requested)
+#   return list( seen_twice )
+
+# a = [1,2,3,2,1,5,6,5,5,5]
+# list_duplicates(a) # yields [1, 2, 5]
 
 
 def find_letter_indices(words, letter):
@@ -348,6 +420,10 @@ def find_letter_indices(words, letter):
     `None`.)
     """
 
+    indexes = []
+    for word in words:
+        if letter in word:
+            indexes.append()
     return []
 
 #####################################################################
