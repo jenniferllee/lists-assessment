@@ -56,9 +56,30 @@ def print_indices(items):
 
     """
 
+    # DOES NOT WORK:
+    # for item in items:
+    #     index = str(items.index(item))
+    #     print index + " " + item
+
+    # Expected:
+    #     0 Toyota
+    #     1 Jeep
+    #     2 Toyota
+    #     3 Volvo
+    # Got:
+    #     0 Toyota
+    #     1 Jeep
+    #     0 Toyota
+    #     3 Volvo
+
+    # THIS WORKS:
+    # for count, item in enumerate(items):
+    #     print count, item
+
+    item_in_tuple = []
     for item in items:
-        index = str(item.index)
-        print index + item
+        item_in_tuple.append()
+        tuple(item)
 
 
 def foods_in_common(foods1, foods2):
@@ -145,7 +166,14 @@ def largest_n_items(items, n):
         [3, 3]
     """
 
-    return []
+    items.sort()
+
+    if n == 0:
+        return []
+    else:
+        largest_items = items[(n*(-1)):]
+
+    return largest_items
 
 
 #####################################################################
